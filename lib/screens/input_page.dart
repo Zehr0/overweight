@@ -64,7 +64,7 @@ class _InputPageState extends State<InputPage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => ResultsPage(
-                        bmiResult: calc.calculateBMI(),
+                        bmiResult: calc.calculateBMI(age),
                         resultText: calc.getResult(),
                         interpretation: calc.getInterpretation(),
                       ),
@@ -165,7 +165,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                   child: Slider(
                     value: height.toDouble(),
-                    min: 120.0,
+                    min: 40.0,
                     max: 220.0,
                     onChanged: (double newValue) {
                       setState(() {
@@ -353,7 +353,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                   child: Slider(
                     value: height.toDouble(),
-                    min: 120.0,
+                    min: 40.0,
                     max: 220.0,
                     onChanged: (double newValue) {
                       setState(() {
@@ -466,7 +466,7 @@ class _InputPageState extends State<InputPage> {
               context,
               MaterialPageRoute(
                 builder: (context) => ResultsPage(
-                  bmiResult: calc.calculateBMI(),
+                  bmiResult: calc.calculateBMI(age),
                   resultText: calc.getResult(),
                   interpretation: calc.getInterpretation(),
                 ),
