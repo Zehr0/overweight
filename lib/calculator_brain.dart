@@ -8,9 +8,24 @@ class CalculatorBrain {
 
   late double _bmi;
 
-  String calculateBMI() {
-    //BMI Formular == Weight in Kg / square of height in metres
-    _bmi = weight / pow(height / 100, 2);
+  String calculateBMI(int age) {
+    if (age > 19) {
+      //adult
+      //BMI Formular == Weight in Kg / square of height in metres
+      _bmi = weight / pow(height / 100, 2);
+    } else {
+      //children
+      //BMI Formular == Weight in pounds * 703 (a) / square of height in inches (b)
+
+      //1kg = 2.2lbs
+      double weightInPounds = weight * 2.20462;
+      double a = weightInPounds * 703;
+
+      //1cm = .39in
+      double b = pow(height * 0.393701, 2).toDouble();
+
+      _bmi = a / b;
+    }
     return _bmi.toStringAsFixed(1);
   }
 
@@ -29,7 +44,7 @@ class CalculatorBrain {
   String getInterpretation() {
     if (_bmi >= 30) {
       return 'You are obese. See a doctor or pharmacist for counselling.';
-    }else if (_bmi >= 25) {
+    } else if (_bmi >= 25) {
       return 'You have a higher than normal body weight. Try to exercise more.';
     } else if (_bmi >= 18.5) {
       return 'You have a normal body weight. Good job!';
